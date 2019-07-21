@@ -57,6 +57,7 @@ store.dispatch(setStory('home', 'base'));
 import App from './App';
 ```
 По умолчанию для примера выбран вариант с Epic навигацией.
+
 В файле по пути `/src/js/services/VK` нужно заменить значение константы `APP_ID` на ID вашего приложения
 
 
