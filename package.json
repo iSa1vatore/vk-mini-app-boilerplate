@@ -1,0 +1,40 @@
+{
+  "name": "vkminiappboilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://bots.sproject.space/boilerplate/",
+  "scripts": {
+    "start": "cross-env PORT=10888 react-scripts start",
+    "build": "react-scripts build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "react-hot-loader": "^4.12.8",
+    "react-scripts": "^2.1.8"
+  },
+  "dependencies": {
+    "@vkontakte/icons": "^1.6.0",
+    "@vkontakte/vkui": "^2.23.1",
+    "@vkontakte/vkui-connect": "^1.1.3",
+    "@vkontakte/vkui-connect-promise": "^0.1.19",
+    "babel-eslint": "^9.0.0",
+    "chalk": "^2.4.2",
+    "core-js": "^2.6.9",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

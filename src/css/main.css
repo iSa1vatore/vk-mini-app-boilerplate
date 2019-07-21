@@ -1,0 +1,8 @@
+.div-center {
+    display: table;
+    margin: 0 auto;
+}
+
+.div-center img {
+    width: 10rem;
+}

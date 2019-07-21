@@ -1,0 +1,2 @@
+export const SET_COLOR_SCHEME = 'SET_COLOR_SCHEME';
+export const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN';
