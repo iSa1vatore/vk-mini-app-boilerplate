@@ -32,9 +32,7 @@ class App extends React.Component {
     }
 
     componentWillMount() {
-        const {setStory, goBack, dispatch} = this.props;
-
-        setStory('home', 'base');
+        const {goBack, dispatch} = this.props;
 
         dispatch(VK.initApp());
 
