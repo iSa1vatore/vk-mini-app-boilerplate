@@ -45,12 +45,26 @@ class App extends React.Component {
 
                     this.props.goBack('Android');
                 } else {
-                    window.history.pushState(null, null, window.location.url);
+                    window.history.pushState(null, null);
                 }
             } else {
                 goBack('Android');
             }
         };
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {activeView, activeStory, activePanel, scrollPosition} = this.props;
+
+        if (
+            prevProps.activeView !== activeView ||
+            prevProps.activePanel !== activePanel ||
+            prevProps.activeStory !== activeStory
+        ) {
+            let pageScrollPosition = scrollPosition[activeStory + "_" + activeView + "_" + activePanel] || 0;
+
+            window.scroll(0, pageScrollPosition);
+        }
     }
 
     render() {
@@ -133,6 +147,7 @@ const mapStateToProps = (state) => {
         panelsHistory: state.router.panelsHistory,
         activeModals: state.router.activeModals,
         popouts: state.router.popouts,
+        scrollPosition: state.router.scrollPosition,
 
         colorScheme: state.vkui.colorScheme
     };

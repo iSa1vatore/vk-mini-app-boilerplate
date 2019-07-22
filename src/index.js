@@ -8,6 +8,7 @@ import {applyMiddleware, createStore} from "redux";
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import rootReducer from './js/store/reducers';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 import {setStory} from "./js/store/router/actions";
 
@@ -16,10 +17,9 @@ import './css/main.css';
 
 import App from './App';
 
-export const store = createStore(
-    rootReducer,
-    applyMiddleware(thunk)
-);
+export const store = createStore(rootReducer, composeWithDevTools(
+    applyMiddleware(thunk),
+));
 
 store.dispatch(setStory('home', 'base'));
 

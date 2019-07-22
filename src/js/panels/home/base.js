@@ -64,6 +64,97 @@ class HomePanelBase extends React.Component {
                     {this.state.showImg && <Div className="div-center">
                         <img src="https://vk.com/sticker/1-12676-256" alt="Стикер VK"/>
                     </Div>}
+                    <Div>
+                        <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                            модальную страницу</Button>
+                    </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>                    <Div>
+                    <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        модальную страницу</Button>
+                </Div>
                 </Group>
             </Panel>
         );

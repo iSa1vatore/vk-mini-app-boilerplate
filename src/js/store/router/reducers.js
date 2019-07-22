@@ -1,19 +1,30 @@
-import {SET_PAGE, GO_BACK, OPEN_POPOUT, CLOSE_POPOUT, OPEN_MODAL, CLOSE_MODAL, SET_STORY} from './actionTypes';
+import {
+    SET_PAGE,
+    GO_BACK,
+    OPEN_POPOUT,
+    CLOSE_POPOUT,
+    OPEN_MODAL,
+    CLOSE_MODAL,
+    SET_STORY
+} from './actionTypes';
 
 import * as VK from "../../services/VK";
+import {smoothScrollToTop} from "../../services/_functions";
 
 const initialState = {
     activeStory: null,
     activeView: null,
     activePanel: null,
 
-    panelsHistory: [],
-    viewsHistory: [],
     storiesHistory: [],
+    viewsHistory: [],
+    panelsHistory: [],
 
     activeModals: [],
     modalHistory: [],
-    popouts: []
+    popouts: [],
+
+    scrollPosition: []
 };
 
 export const routerReducer = (state = initialState, action) => {
@@ -24,7 +35,7 @@ export const routerReducer = (state = initialState, action) => {
             let View = action.payload.view;
             let Panel = action.payload.panel;
 
-            window.history.pushState({View: View, Panel: Panel}, View);
+            window.history.pushState(null, null);
 
             let panelsHistory = state.panelsHistory[View] || [];
             let viewsHistory = state.viewsHistory[state.activeStory] || [];
@@ -55,35 +66,51 @@ export const routerReducer = (state = initialState, action) => {
                 viewsHistory: {
                     ...state.viewsHistory,
                     [state.activeStory]: [...viewsHistory, View]
+                },
+                scrollPosition: {
+                    ...state.scrollPosition,
+                    [state.activeStory + "_" + state.activeView + "_" + state.activePanel]: window.pageYOffset
                 }
             };
         }
 
         case SET_STORY: {
-            window.history.pushState(null, null, window.location.url);
+            window.history.pushState(null, null);
 
             let viewsHistory = state.viewsHistory[action.payload.story] || [action.payload.story];
-            let activeView = viewsHistory[viewsHistory.length - 1];
 
-            let panelsHistory = state.panelsHistory[activeView] || [action.payload.initial_panel];
             let storiesHistory = state.storiesHistory;
-
+            let activeView = viewsHistory[viewsHistory.length - 1];
+            let panelsHistory = state.panelsHistory[activeView] || [action.payload.initial_panel];
             let activePanel = panelsHistory[panelsHistory.length - 1];
 
-            if (action.payload.story === state.activeStory && panelsHistory.length > 1) {
-                activePanel = panelsHistory[panelsHistory.length - 2];
+            if (action.payload.story === state.activeStory) {
+                if (panelsHistory.length > 1) {
+                    panelsHistory.pop();
 
-                panelsHistory.pop();
+                    activePanel = panelsHistory[panelsHistory.length - 1];
+                }
+
+                if (viewsHistory.length > 1) {
+                    viewsHistory.pop();
+                    panelsHistory.pop();
+
+                    activeView = viewsHistory[viewsHistory.length - 1];
+                    panelsHistory = state.panelsHistory[activeView] || [action.payload.initial_panel];
+                    activePanel = panelsHistory[panelsHistory.length - 1];
+                }
+            }
+
+            if (action.payload.story === state.activeStory && panelsHistory.length === 1 && window.pageYOffset > 0) {
+                window.scrollTo(0, 30);
+
+                smoothScrollToTop();
             }
 
             const storiesIndexInHistory = storiesHistory.indexOf(action.payload.story);
 
             if (storiesIndexInHistory !== -1 && storiesIndexInHistory !== 0) {
                 storiesHistory.splice(storiesIndexInHistory, 1);
-            }
-
-            if (viewsHistory.indexOf(action.payload.story) === -1) {
-                viewsHistory = [...viewsHistory, action.payload.story];
             }
 
             return {
@@ -93,13 +120,18 @@ export const routerReducer = (state = initialState, action) => {
                 activePanel: activePanel,
 
                 storiesHistory: [...storiesHistory, action.payload.story],
+                viewsHistory: {
+                    ...state.viewsHistory,
+                    [activeView]: viewsHistory
+                },
                 panelsHistory: {
                     ...state.panelsHistory,
                     [activeView]: panelsHistory
                 },
-                viewsHistory: {
-                    ...state.viewsHistory,
-                    [action.payload.story]: viewsHistory
+
+                scrollPosition: {
+                    ...state.scrollPosition,
+                    [state.activeStory + "_" + state.activeView + "_" + state.activePanel]: window.pageYOffset
                 }
             };
         }
@@ -159,10 +191,9 @@ export const routerReducer = (state = initialState, action) => {
             } else if (viewsHistory.length > 1) {
                 viewsHistory.pop();
 
-                let newView = viewsHistory[viewsHistory.length - 1];
-                let panelsHistoryNew = state.panelsHistory[newView];
+                setView = viewsHistory[viewsHistory.length - 1];
+                let panelsHistoryNew = state.panelsHistory[setView];
 
-                setView = newView;
                 setPanel = panelsHistoryNew[panelsHistoryNew.length - 1];
             } else if (storiesHistory.length > 1 && action.payload.from === 'Android') {
                 storiesHistory.pop();
@@ -191,19 +222,19 @@ export const routerReducer = (state = initialState, action) => {
                 activePanel: setPanel,
                 activeStory: setStory,
 
-                panelsHistory: {
-                    ...state.panelsHistory,
-                    [state.activeView]: panelsHistory
-                },
                 viewsHistory: {
                     ...state.viewsHistory,
                     [state.activeView]: viewsHistory
+                },
+                panelsHistory: {
+                    ...state.panelsHistory,
+                    [state.activeView]: panelsHistory
                 }
             };
         }
 
         case OPEN_POPOUT: {
-            window.history.pushState(null, null, window.location.url);
+            window.history.pushState(null, null);
 
             return {
                 ...state,
@@ -225,7 +256,7 @@ export const routerReducer = (state = initialState, action) => {
         }
 
         case OPEN_MODAL: {
-            window.history.pushState(null, null, window.location.url);
+            window.history.pushState(null, null);
 
             let activeModal = action.payload.id || null;
             let modalsHistory = state.modalHistory[state.activeView] ? [...state.modalHistory[state.activeView]] : [];
