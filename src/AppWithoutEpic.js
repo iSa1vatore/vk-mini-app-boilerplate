@@ -46,6 +46,20 @@ class App extends React.Component {
         };
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {activeView, activeStory, activePanel, scrollPosition} = this.props;
+
+        if (
+            prevProps.activeView !== activeView ||
+            prevProps.activePanel !== activePanel ||
+            prevProps.activeStory !== activeStory
+        ) {
+            let pageScrollPosition = scrollPosition[activeStory + "_" + activeView + "_" + activePanel] || 0;
+
+            window.scroll(0, pageScrollPosition);
+        }
+    }
+
     render() {
         const {goBack, closeModal, popouts, activeView, activePanel, activeModals, panelsHistory, colorScheme} = this.props;
 
@@ -98,9 +112,11 @@ const mapStateToProps = (state) => {
     return {
         activeView: state.router.activeView,
         activePanel: state.router.activePanel,
+        activeStory: state.router.activeStory,
         panelsHistory: state.router.panelsHistory,
         activeModals: state.router.activeModals,
         popouts: state.router.popouts,
+        scrollPosition: state.router.scrollPosition,
 
         colorScheme: state.vkui.colorScheme
     };
