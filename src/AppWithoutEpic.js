@@ -30,18 +30,14 @@ class App extends React.Component {
         dispatch(VK.initApp());
 
         window.onpopstate = () => {
-            if (this.props.panelsHistory.length > 2) {
-                let timeNow = +new Date();
+            let timeNow = +new Date();
 
-                if (timeNow - this.lastAndroidBackAction > 500) {
-                    this.lastAndroidBackAction = timeNow;
+            if (timeNow - this.lastAndroidBackAction > 500) {
+                this.lastAndroidBackAction = timeNow;
 
-                    this.props.goBack('Android');
-                } else {
-                    window.history.pushState(null, null, window.location.url);
-                }
-            } else {
                 goBack('Android');
+            } else {
+                window.history.pushState(null, null);
             }
         };
     }

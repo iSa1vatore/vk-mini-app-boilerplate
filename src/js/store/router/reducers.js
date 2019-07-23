@@ -86,17 +86,16 @@ export const routerReducer = (state = initialState, action) => {
 
             if (action.payload.story === state.activeStory) {
                 if (panelsHistory.length > 1) {
-                    panelsHistory.pop();
+                    let firstPanel = panelsHistory.shift();
+                    panelsHistory = [firstPanel];
 
                     activePanel = panelsHistory[panelsHistory.length - 1];
-                }
-
-                if (viewsHistory.length > 1) {
-                    viewsHistory.pop();
-                    panelsHistory.pop();
+                } else if (viewsHistory.length > 1) {
+                    let firstView = viewsHistory.shift();
+                    viewsHistory = [firstView];
 
                     activeView = viewsHistory[viewsHistory.length - 1];
-                    panelsHistory = state.panelsHistory[activeView] || [action.payload.initial_panel];
+                    panelsHistory = state.panelsHistory[activeView];
                     activePanel = panelsHistory[panelsHistory.length - 1];
                 }
             }
