@@ -48,7 +48,7 @@ export const groupsGet = () => {
     return APICall('groups.get', {
         "extended": "1",
         "fields": "description",
-        "count": "1000"
+        "count": "100"
     });
 };
 
