@@ -6,3 +6,11 @@
 .div-center img {
     width: 10rem;
 }
+
+.buttons-group {
+    display: flex;
+}
+
+.buttons-group button:first-child {
+    margin-right: 8px;
+}
