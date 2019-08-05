@@ -21,7 +21,7 @@
 - Поддержка темы нативного клиента
 - Поддержка iOS swipe back для панелей
 - Обработка хардверной кнопки "назад" для Android
-- Сохранение позиции скролла для панелей
+- Сохранение позиции скролла для панелей и элементов
 - Scroll To Top при нажатии на иконку в Epic`e
 - Получение токена пользователя
 - Запросы к API ВКонтакте
@@ -40,6 +40,30 @@
 
 Примеры того как это все работает смотрите в исходниках ¯\_(ツ)_/¯, там все просто.
 
+#### Сохранение позиции скролла:
+Для сохранения позиции горизонтального скоролла нужно:
+
+- Указать ID для элемента HorizontalScroll
+```javascript
+<HorizontalScroll id="EXAMPLE_TABS_LIST">
+...
+</HorizontalScroll>
+```
+- Сохранить позицию при демонтировании
+```javascript
+componentWillUnmount() {
+    const {setScrollPositionByID} = this.props;
+
+    setScrollPositionByID("EXAMPLE_TABS_LIST");
+}
+```
+- Восстановить позицию при монтировании
+```javascript
+componentDidMount() {
+    restoreScrollPosition();
+}
+```
+Пример находится в файле: [`/src/js/panels/more/base.js`](https://github.com/iSa1vatore/vk-mini-app-boilerplate/blob/master/src/js/panels/more/base.js)
 #### Важно:
 В файле index.js на 24 стороке указывается стартовая панель приложения:
 ```javascript
@@ -61,7 +85,7 @@ import App from './App';
 ```
 По умолчанию для примера выбран вариант с Epic навигацией.
 
-В файле по пути `/src/js/services/VK` нужно заменить значение константы `APP_ID` на ID вашего приложения
+В файле по пути [`/src/js/services/VK.js`](https://github.com/iSa1vatore/vk-mini-app-boilerplate/blob/master/src/js/services/VK.js) нужно заменить значение константы `APP_ID` на ID вашего приложения
 
 
 Демо: [vk.com/app6984089](https://vk.com/app6984089)
