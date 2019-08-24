@@ -12,21 +12,22 @@
   "license": "MIT",
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "react-hot-loader": "^4.12.10",
+    "react-hot-loader": "^4.12.11",
     "react-scripts": "^2.1.8",
     "redux-devtools-extension": "^2.13.8"
   },
   "dependencies": {
-    "@vkontakte/icons": "^1.7.0",
-    "@vkontakte/vkui": "^2.23.6",
-    "@vkontakte/vkui-connect": "^1.4.0",
+    "@vkontakte/icons": "^1.8.2",
+    "@vkontakte/vk-connect": "^1.5.5",
+    "@vkontakte/vkui": "^2.27.0-rc.4",
+    "@vkontakte/vkui-connect": "^1.5.4",
     "@vkontakte/vkui-connect-promise": "^0.1.19",
     "babel-eslint": "^9.0.0",
     "chalk": "^2.4.2",
     "core-js": "^2.6.9",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
