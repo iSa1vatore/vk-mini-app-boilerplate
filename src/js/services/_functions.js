@@ -16,7 +16,7 @@ export const smoothScrollToTop = () => {
 export const restoreScrollPosition = () => {
     let scrolls = store.getState().vkui.componentScroll;
 
-    Object.keys(scrolls).map((component) => {
+    Object.keys(scrolls).forEach((component) => {
         let componentData = scrolls[component];
 
         let element = document.getElementById(component);

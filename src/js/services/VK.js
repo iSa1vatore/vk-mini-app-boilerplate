@@ -1,4 +1,4 @@
-import VKConnectOld from "@vkontakte/vkui-connect";
+import VKConnectOld from "@vkontakte/vk-connect";
 import VKConnect from "@vkontakte/vkui-connect-promise";
 
 import {store} from "../../index";

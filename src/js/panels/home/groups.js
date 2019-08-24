@@ -16,7 +16,7 @@ import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import PanelSpinner from '@vkontakte/vkui/dist/components/PanelSpinner/PanelSpinner';
 import PanelHeaderBack from '@vkontakte/vkui/dist/components/PanelHeaderBack/PanelHeaderBack';
 
-class HomePanelProfile extends React.Component {
+class HomePanelGroups extends React.Component {
 
     state = {
         groups: {
@@ -39,19 +39,21 @@ class HomePanelProfile extends React.Component {
         this.props.dispatch(VK.getAuthToken(['groups']));
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        if (nextProps.accessToken === null) {
-            this.setState({
-                loading: false,
-                errorGetAuthToken: true
-            });
-        } else {
-            this.setState({
-                loading: true,
-                errorGetAuthToken: false
-            });
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props !== prevProps) {
+            if (this.props.accessToken === null) {
+                this.setState({
+                    loading: false,
+                    errorGetAuthToken: true
+                });
+            } else {
+                this.setState({
+                    loading: true,
+                    errorGetAuthToken: false
+                });
 
-            this.getGroupsList();
+                this.getGroupsList();
+            }
         }
     }
 
@@ -70,21 +72,21 @@ class HomePanelProfile extends React.Component {
 
         let groups = await VK.groupsGet();
 
-        let adminedGrouos = groups.items.filter(function (item) {
+        let adminedGroups = groups.items.filter(function (item) {
             return item.is_admin === 1;
         });
 
-        let otherGrouos = groups.items.filter(function (item) {
+        let otherGroups = groups.items.filter(function (item) {
             return item.is_admin === 0;
         });
 
-        localStorage.setItem('userGroupsAdmined', JSON.stringify(adminedGrouos));
-        localStorage.setItem('userGroupsOther', JSON.stringify(otherGrouos));
+        localStorage.setItem('userGroupsAdmined', JSON.stringify(adminedGroups));
+        localStorage.setItem('userGroupsOther', JSON.stringify(otherGroups));
 
         this.setState({
             groups: {
-                admined: adminedGrouos,
-                other: otherGrouos
+                admined: adminedGroups,
+                other: otherGroups
             },
             loading: false
         });
@@ -142,4 +144,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePanelProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePanelGroups);
