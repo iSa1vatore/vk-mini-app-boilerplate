@@ -4,16 +4,18 @@ import {connect} from 'react-redux';
 import {goBack} from '../../store/router/actions';
 import {setFormData} from "../../store/formData/actions";
 
-import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import Checkbox from '@vkontakte/vkui/dist/components/Checkbox/Checkbox';
-import Input from '@vkontakte/vkui/dist/components/Input/Input';
-import FormLayout from '@vkontakte/vkui/dist/components/FormLayout/FormLayout';
-import FormLayoutGroup from '@vkontakte/vkui/dist/components/FormLayoutGroup/FormLayoutGroup';
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import PanelHeaderBack from '@vkontakte/vkui/dist/components/PanelHeaderBack/PanelHeaderBack';
+import {
+    Div,
+    Button,
+    Checkbox,
+    Input,
+    FormLayout,
+    FormLayoutGroup,
+    Panel,
+    Group,
+    PanelHeader,
+    PanelHeaderBack
+} from "@vkontakte/vkui";
 
 class HomePanelProfile extends React.Component {
 

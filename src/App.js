@@ -4,13 +4,7 @@ import {bindActionCreators} from 'redux'
 import {goBack, closeModal, setStory} from "./js/store/router/actions";
 import * as VK from './js/services/VK';
 
-import Epic from '@vkontakte/vkui/dist/components/Epic/Epic';
-import View from '@vkontakte/vkui/dist/components/View/View';
-import Root from '@vkontakte/vkui/dist/components/Root/Root';
-import Tabbar from '@vkontakte/vkui/dist/components/Tabbar/Tabbar';
-import ModalRoot from '@vkontakte/vkui/dist/components/ModalRoot/ModalRoot';
-import TabbarItem from '@vkontakte/vkui/dist/components/TabbarItem/TabbarItem';
-import ConfigProvider from '@vkontakte/vkui/dist/components/ConfigProvider/ConfigProvider';
+import {Epic, View, Root, Tabbar, ModalRoot, TabbarItem, ConfigProvider} from "@vkontakte/vkui";
 
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import Icon28More from '@vkontakte/icons/dist/28/more';
@@ -31,7 +25,7 @@ class App extends React.Component {
         this.lastAndroidBackAction = 0;
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const {goBack, dispatch} = this.props;
 
         dispatch(VK.initApp());

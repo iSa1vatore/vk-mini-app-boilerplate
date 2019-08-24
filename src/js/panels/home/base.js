@@ -3,12 +3,7 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage} from '../../store/router/actions';
 
-import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import Alert from '@vkontakte/vkui/dist/components/Alert/Alert';
-import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
+import {Div, Panel, Alert, Group, Button, PanelHeader} from "@vkontakte/vkui"
 
 class HomePanelBase extends React.Component {
 

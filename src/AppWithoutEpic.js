@@ -4,10 +4,7 @@ import {bindActionCreators} from 'redux'
 import {goBack, closeModal} from "./js/store/router/actions";
 import * as VK from './js/services/VK';
 
-import View from '@vkontakte/vkui/dist/components/View/View';
-import Root from '@vkontakte/vkui/dist/components/Root/Root';
-import ModalRoot from '@vkontakte/vkui/dist/components/ModalRoot/ModalRoot';
-import ConfigProvider from '@vkontakte/vkui/dist/components/ConfigProvider/ConfigProvider';
+import {View, Root, ModalRoot, ConfigProvider} from "@vkontakte/vkui";
 
 import HomePanelProfile from './js/panels/home/base';
 import HomePanelGroups from './js/panels/home/groups';

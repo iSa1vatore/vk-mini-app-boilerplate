@@ -7,14 +7,7 @@ import * as VK from '../../services/VK';
 
 import {renderGroupsList} from '../../services/renderers';
 
-import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import List from '@vkontakte/vkui/dist/components/List/List';
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import PanelSpinner from '@vkontakte/vkui/dist/components/PanelSpinner/PanelSpinner';
-import PanelHeaderBack from '@vkontakte/vkui/dist/components/PanelHeaderBack/PanelHeaderBack';
+import {Div, List, Panel, Group, Button, PanelHeader, PanelSpinner, PanelHeaderBack} from "@vkontakte/vkui";
 
 class HomePanelGroups extends React.Component {
 

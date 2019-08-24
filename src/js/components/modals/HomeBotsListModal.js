@@ -1,15 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {IS_PLATFORM_IOS} from '@vkontakte/vkui/src/lib/platform';
 import {openModal} from "../../store/router/actions";
 
-import List from '@vkontakte/vkui/dist/components/List/List';
-import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
-import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
-import ModalPage from '@vkontakte/vkui/dist/components/ModalPage/ModalPage';
-import ModalPageHeader from '@vkontakte/vkui/dist/components/ModalPageHeader/ModalPageHeader';
-import HeaderButton from '@vkontakte/vkui/dist/components/HeaderButton/HeaderButton';
+import {List, Cell, Avatar, ModalPage, ModalPageHeader, HeaderButton, IS_PLATFORM_IOS} from "@vkontakte/vkui";
+
 import Icon24Dismiss from '@vkontakte/icons/dist/24/dismiss';
 import Icon24Cancel from '@vkontakte/icons/dist/24/cancel';
 import Icon24Chevron from '@vkontakte/icons/dist/24/chevron';

@@ -5,15 +5,17 @@ import {setPage} from "../../store/router/actions";
 import {setActiveTab, setScrollPositionByID} from "../../store/vk/actions";
 import {restoreScrollPosition} from "../../services/_functions";
 
-import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
-import HorizontalScroll from '@vkontakte/vkui/dist/components/HorizontalScroll/HorizontalScroll';
-import TabsItem from '@vkontakte/vkui/dist/components/TabsItem/TabsItem';
-import Tabs from '@vkontakte/vkui/dist/components/Tabs/Tabs';
+import {
+    Div,
+    Panel,
+    Group,
+    CellButton,
+    PanelHeader,
+    FixedLayout,
+    HorizontalScroll,
+    TabsItem,
+    Tabs
+} from "@vkontakte/vkui";
 
 class HomePanelProfile extends React.Component {
 
