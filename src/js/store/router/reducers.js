@@ -108,8 +108,8 @@ export const routerReducer = (state = initialState, action) => {
 
             const storiesIndexInHistory = storiesHistory.indexOf(action.payload.story);
 
-            if (storiesIndexInHistory !== -1 && storiesIndexInHistory !== 0) {
-                storiesHistory.splice(storiesIndexInHistory, 1);
+            if (storiesIndexInHistory === -1 || (storiesHistory[0] === action.payload.story && storiesHistory[storiesHistory.length - 1] !== action.payload.story)) {
+                storiesHistory = [...storiesHistory, action.payload.story];
             }
 
             return {
@@ -118,7 +118,7 @@ export const routerReducer = (state = initialState, action) => {
                 activeView: activeView,
                 activePanel: activePanel,
 
-                storiesHistory: [...storiesHistory, action.payload.story],
+                storiesHistory: storiesHistory,
                 viewsHistory: {
                     ...state.viewsHistory,
                     [activeView]: viewsHistory
