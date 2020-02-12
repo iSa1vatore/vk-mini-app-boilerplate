@@ -36,7 +36,7 @@ class App extends React.Component {
             if (timeNow - this.lastAndroidBackAction > 500) {
                 this.lastAndroidBackAction = timeNow;
 
-                goBack('Android');
+                goBack();
             } else {
                 window.history.pushState(null, null);
             }

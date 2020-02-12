@@ -20,12 +20,9 @@ export const setPage = (view, panel) => (
     }
 );
 
-export const goBack = (from = 'iOS') => (
+export const goBack = () => (
     {
-        type: GO_BACK,
-        payload: {
-            from: from
-        }
+        type: GO_BACK
     }
 );
 

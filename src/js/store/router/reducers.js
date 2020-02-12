@@ -194,7 +194,7 @@ export const routerReducer = (state = initialState, action) => {
                 let panelsHistoryNew = state.panelsHistory[setView];
 
                 setPanel = panelsHistoryNew[panelsHistoryNew.length - 1];
-            } else if (storiesHistory.length > 1 && action.payload.from === 'Android') {
+            } else if (storiesHistory.length > 1) {
                 storiesHistory.pop();
 
                 setStory = storiesHistory[storiesHistory.length - 1];
@@ -211,7 +211,7 @@ export const routerReducer = (state = initialState, action) => {
                 VK.closeApp();
             }
 
-            if (panelsHistory.length === 1 && action.payload.from === 'iOS') {
+            if (panelsHistory.length === 1) {
                 VK.swipeBackOff();
             }
 
