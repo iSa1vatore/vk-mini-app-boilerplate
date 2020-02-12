@@ -52,7 +52,7 @@ class HomePanelProfile extends React.Component {
             <Panel id={id}>
                 <PanelHeader noShadow={true}>Examples 2</PanelHeader>
                 <FixedLayout vertical="top">
-                    <Tabs theme="header" type="buttons">
+                    <Tabs theme="header" mode="default">
                         <HorizontalScroll id="EXAMPLE_TABS_LIST">
                             <TabsItem
                                 onClick={() => this.setTab('modal')}

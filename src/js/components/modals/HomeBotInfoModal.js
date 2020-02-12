@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {Cell, List, Avatar, InfoRow, ModalPage, ModalPageHeader, HeaderButton, IS_PLATFORM_IOS} from "@vkontakte/vkui";
+import {Cell, List, Avatar, InfoRow, ModalPage, ModalPageHeader, PanelHeaderButton, withPlatform, IOS} from "@vkontakte/vkui";
 
 import Icon24Dismiss from '@vkontakte/icons/dist/24/dismiss';
 import Icon24Cancel from '@vkontakte/icons/dist/24/cancel';
@@ -9,17 +9,17 @@ import Icon24Cancel from '@vkontakte/icons/dist/24/cancel';
 class HomeBotsListModal extends React.Component {
 
     render() {
-        const {id, onClose} = this.props;
+        const {id, onClose, platform} = this.props;
 
         return (
             <ModalPage
                 id={id}
                 header={
                     <ModalPageHeader
-                        left={!IS_PLATFORM_IOS &&
-                        <HeaderButton onClick={onClose}><Icon24Cancel/></HeaderButton>}
-                        right={IS_PLATFORM_IOS &&
-                        <HeaderButton onClick={onClose}><Icon24Dismiss/></HeaderButton>}
+                        left={platform !== IOS &&
+                        <PanelHeaderButton onClick={onClose}><Icon24Cancel/></PanelHeaderButton>}
+                        right={platform === IOS &&
+                        <PanelHeaderButton onClick={onClose}><Icon24Dismiss/></PanelHeaderButton>}
                     >
                         Информация о боте
                     </ModalPageHeader>
@@ -35,17 +35,17 @@ class HomeBotsListModal extends React.Component {
                 </Cell>
                 <List>
                     <Cell>
-                        <InfoRow title="Подписчиков">
+                        <InfoRow header="Подписчиков">
                             8800
                         </InfoRow>
                     </Cell>
                     <Cell>
-                        <InfoRow title="Записей">
+                        <InfoRow header="Записей">
                             555
                         </InfoRow>
                     </Cell>
                     <Cell>
-                        <InfoRow title="Рейтинг">
+                        <InfoRow header="Рейтинг">
                             3535
                         </InfoRow>
                     </Cell>
@@ -56,4 +56,4 @@ class HomeBotsListModal extends React.Component {
 
 }
 
-export default connect()(HomeBotsListModal);
+export default withPlatform(connect()(HomeBotsListModal));

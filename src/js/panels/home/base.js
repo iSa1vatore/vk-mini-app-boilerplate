@@ -43,18 +43,18 @@ class HomePanelBase extends React.Component {
                 <PanelHeader>Examples</PanelHeader>
                 <Group>
                     <Div>
-                        <Button size="l" stretched={true} onClick={() => setPage('home', 'groups')}>Список моих
+                        <Button mode="secondary" size="l" stretched={true} onClick={() => setPage('home', 'groups')}>Список моих
                             групп</Button>
                     </Div>
                     <Div>
-                        <Button size="l" stretched={true} onClick={() => this.openPopout()}>Открыть алерт</Button>
+                        <Button mode="secondary" size="l" stretched={true} onClick={() => this.openPopout()}>Открыть алерт</Button>
                     </Div>
                     <Div>
-                        <Button size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
+                        <Button mode="secondary" size="l" stretched={true} onClick={() => this.props.openModal("MODAL_PAGE_BOTS_LIST")}>Открыть
                             модальную страницу</Button>
                     </Div>
                     {withoutEpic && <Div>
-                        <Button size="l" stretched={true} onClick={() => setPage('modal', 'filters')}>Открыть модальное окно</Button>
+                        <Button mode="secondary" size="l" stretched={true} onClick={() => setPage('modal', 'filters')}>Открыть модальное окно</Button>
                     </Div>}
                     {this.state.showImg && <Div className="div-center">
                         <img src="https://vk.com/sticker/1-12676-256" alt="Стикер VK"/>

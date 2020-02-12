@@ -1,5 +1,4 @@
-import VKConnectOld from "@vkontakte/vk-connect";
-import VKConnect from "@vkontakte/vkui-connect-promise";
+import VKConnect from "@vkontakte/vk-connect";
 
 import {store} from "../../index";
 
@@ -9,16 +8,20 @@ const APP_ID = 6984089;
 const API_VERSION = '5.92';
 
 export const initApp = () => (dispatch) => {
-    const VKConnectOldCallback = (e) => {
+    const VKConnectCallback = (e) => {
         if (e.detail.type === 'VKWebAppUpdateConfig') {
-            VKConnectOld.unsubscribe(VKConnectOldCallback);
+            VKConnect.unsubscribe(VKConnectCallback);
 
             dispatch(setColorScheme(e.detail.data.scheme));
         }
     };
 
-    VKConnectOld.subscribe(VKConnectOldCallback);
-    VKConnect.send('VKWebAppInit', {});
+    VKConnect.subscribe(VKConnectCallback);
+    return VKConnect.send('VKWebAppInit', {}).then(data => {
+        return data;
+    }).catch(error => {
+        return error;
+    });
 };
 
 export const getAuthToken = (scope) => (dispatch) => {
@@ -26,22 +29,36 @@ export const getAuthToken = (scope) => (dispatch) => {
         "app_id": APP_ID,
         "scope": scope.join(',')
     }).then(data => {
-        dispatch(setAccessToken(data.data.access_token));
+        dispatch(setAccessToken(data.access_token));
     }).catch(() => {
         dispatch(setAccessToken(null));
     });
 };
 
 export const closeApp = () => {
-    VKConnect.send("VKWebAppClose", {"status": "success"});
+    return VKConnect.send("VKWebAppClose", {
+        "status": "success"
+    }).then(data => {
+        return data;
+    }).catch(error => {
+        return error;
+    });
 };
 
 export const swipeBackOn = () => {
-    VKConnect.send("VKWebAppEnableSwipeBack", {});
+    return VKConnect.send("VKWebAppEnableSwipeBack", {}).then(data => {
+        return data;
+    }).catch(error => {
+        return error;
+    });
 };
 
 export const swipeBackOff = () => {
-    VKConnect.send("VKWebAppDisableSwipeBack", {});
+    return VKConnect.send("VKWebAppDisableSwipeBack", {}).then(data => {
+        return data;
+    }).catch(error => {
+        return error;
+    });
 };
 
 export const groupsGet = () => {
@@ -60,7 +77,7 @@ export const APICall = (method, params) => {
         "method": method,
         "params": params
     }).then(data => {
-        return data.data.response;
+        return data.response;
     }).catch(error => {
         return error;
     });

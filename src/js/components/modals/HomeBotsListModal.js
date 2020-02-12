@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {openModal} from "../../store/router/actions";
 
-import {List, Cell, Avatar, ModalPage, ModalPageHeader, HeaderButton, IS_PLATFORM_IOS} from "@vkontakte/vkui";
+import {List, Cell, Avatar, ModalPage, ModalPageHeader, PanelHeaderButton, withPlatform, IOS} from "@vkontakte/vkui";
 
 import Icon24Dismiss from '@vkontakte/icons/dist/24/dismiss';
 import Icon24Cancel from '@vkontakte/icons/dist/24/cancel';
@@ -21,26 +21,26 @@ const bots = [
         desc: 'Я ни разу не пил кокосовое молоко'
     },
     {
-        name: 'Callback API Бот',
-        avatar: 'https://pp.userapi.com/c846523/v846523036/1e69b7/UxWZ1yAqY7I.jpg',
-        desc: 'Даже не спрашивай'
+        name: 'Realm of War',
+        avatar: 'https://sun9-72.userapi.com/c853520/v853520591/1f167d/avj_z9yFtQA.jpg?ava=1',
+        desc: 'Ненавижу спойлеры.'
     },
 ];
 
 class HomeBotsListModal extends React.Component {
 
     render() {
-        const {id, onClose, openModal} = this.props;
+        const {id, onClose, openModal, platform} = this.props;
 
         return (
             <ModalPage
                 id={id}
                 header={
                     <ModalPageHeader
-                        left={!IS_PLATFORM_IOS &&
-                        <HeaderButton onClick={onClose}><Icon24Cancel/></HeaderButton>}
-                        right={IS_PLATFORM_IOS &&
-                        <HeaderButton onClick={onClose}><Icon24Dismiss/></HeaderButton>}
+                        left={platform !== IOS &&
+                        <PanelHeaderButton onClick={onClose}><Icon24Cancel/></PanelHeaderButton>}
+                        right={platform === IOS &&
+                        <PanelHeaderButton onClick={onClose}><Icon24Dismiss/></PanelHeaderButton>}
                     >
                         /appbots на минималках
                     </ModalPageHeader>
@@ -71,4 +71,4 @@ const mapDispatchToProps = {
     openModal
 };
 
-export default connect(null, mapDispatchToProps)(HomeBotsListModal);
+export default withPlatform(connect(null, mapDispatchToProps)(HomeBotsListModal));
