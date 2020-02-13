@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
 import {goBack, closeModal, setStory} from "./js/store/router/actions";
+import {getActivePanel} from "./js/services/_functions";
 import * as VK from './js/services/VK';
 
 import {Epic, View, Root, Tabbar, ModalRoot, TabbarItem, ConfigProvider} from "@vkontakte/vkui";
@@ -58,7 +59,7 @@ class App extends React.Component {
     }
 
     render() {
-        const {goBack, setStory, closeModal, popouts, activeView, activeStory, activePanel, activeModals, panelsHistory, colorScheme} = this.props;
+        const {goBack, setStory, closeModal, popouts, activeView, activeStory, activeModals, panelsHistory, colorScheme} = this.props;
 
         let history = (panelsHistory[activeView] === undefined) ? [activeView] : panelsHistory[activeView];
         let popout = (popouts[activeView] === undefined) ? null : popouts[activeView];
@@ -95,7 +96,7 @@ class App extends React.Component {
                         <View
                             id="home"
                             modal={homeModals}
-                            activePanel={activePanel}
+                            activePanel={getActivePanel("home")}
                             history={history}
                             onSwipeBack={() => goBack()}
                         >
@@ -107,7 +108,7 @@ class App extends React.Component {
                         <View
                             id="more"
                             modal={homeModals}
-                            activePanel={activePanel}
+                            activePanel={getActivePanel("more")}
                             history={history}
                             onSwipeBack={() => goBack()}
                         >
@@ -116,7 +117,7 @@ class App extends React.Component {
                         <View
                             id="modal"
                             modal={homeModals}
-                            activePanel={activePanel}
+                            activePanel={getActivePanel("modal")}
                             history={history}
                             onSwipeBack={() => goBack()}
                         >
@@ -132,7 +133,6 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     return {
         activeView: state.router.activeView,
-        activePanel: state.router.activePanel,
         activeStory: state.router.activeStory,
         panelsHistory: state.router.panelsHistory,
         activeModals: state.router.activeModals,

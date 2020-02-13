@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
 import {goBack, closeModal} from "./js/store/router/actions";
+import {getActivePanel} from "./js/services/_functions";
 import * as VK from './js/services/VK';
 
 import {View, Root, ModalRoot, ConfigProvider} from "@vkontakte/vkui";
@@ -54,7 +55,7 @@ class App extends React.Component {
     }
 
     render() {
-        const {goBack, closeModal, popouts, activeView, activePanel, activeModals, panelsHistory, colorScheme} = this.props;
+        const {goBack, closeModal, popouts, activeView, activeModals, panelsHistory, colorScheme} = this.props;
 
         let history = (panelsHistory[activeView] === undefined) ? [activeView] : panelsHistory[activeView];
         let popout = (popouts[activeView] === undefined) ? null : popouts[activeView];
@@ -79,7 +80,7 @@ class App extends React.Component {
                     <View
                         id="home"
                         modal={homeModals}
-                        activePanel={activePanel}
+                        activePanel={getActivePanel("home")}
                         history={history}
                         onSwipeBack={() => goBack()}
                     >
@@ -89,7 +90,7 @@ class App extends React.Component {
                     <View
                         id="modal"
                         modal={homeModals}
-                        activePanel={activePanel}
+                        activePanel={getActivePanel("modal")}
                         history={history}
                         onSwipeBack={() => goBack()}
                     >
@@ -104,7 +105,6 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     return {
         activeView: state.router.activeView,
-        activePanel: state.router.activePanel,
         activeStory: state.router.activeStory,
         panelsHistory: state.router.panelsHistory,
         activeModals: state.router.activeModals,
