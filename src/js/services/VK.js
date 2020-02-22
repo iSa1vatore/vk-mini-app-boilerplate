@@ -10,9 +10,8 @@ const API_VERSION = '5.92';
 export const initApp = () => (dispatch) => {
     const VKConnectCallback = (e) => {
         if (e.detail.type === 'VKWebAppUpdateConfig') {
-            VKConnect.unsubscribe(VKConnectCallback);
-
-            dispatch(setColorScheme(e.detail.data.scheme));
+            if(store.getState().vkui.colorScheme !== e.detail.data.scheme)
+                dispatch(setColorScheme(e.detail.data.scheme));
         }
     };
 
